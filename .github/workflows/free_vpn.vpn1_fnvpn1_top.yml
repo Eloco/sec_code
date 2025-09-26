@@ -33,4 +33,4 @@ jobs:
           playwright install --with-deps firefox
 
       - name: Run script
-        run: python ./playwright_script/free_vpn/vpn1_fnvpn1_top.py
+        run: python playwright_script/free_vpn/vpn1.fnvpn1.top.py
