@@ -167,10 +167,10 @@ def convert_to_clash_yaml(config_string: str) -> str:
     return yaml.dump(config, allow_unicode=True, sort_keys=False, indent=2)
 
 
-def upload_to_gist(content: str, gist_id: str, filename: str = "subscribe.yaml") -> None:
-    token = os.environ.get("GITHUB_TOKEN","")
+def upload_to_gist(content: str, gist_id: str, filename: str) -> None:
+    token = os.environ.get("GIST_TOKEN","")
     if not token:
-        raise RuntimeError("未找到 GITHUB_TOKEN 环境变量")
+        raise RuntimeError("未找到 GIST_TOKEN 环境变量")
 
     url = f"https://api.github.com/gists/{gist_id}"
     headers = {
@@ -237,6 +237,10 @@ def run(playwright: Playwright, gist_id: str, filename) -> None:
 
 if __name__ == "__main__":
     gist_id = os.environ.get("GIST_ID", "")
-    file_name = os.environ.get("FILE_NAME", "")
+    if not gist_id:
+        raise RuntimeError("未找到 GIST_ID 环境变量")
+    file_name = os.environ.get("FILE_NAME", "vpn1.fnvpn1.top")
+    if not file_name:
+        raise RuntimeError("未找到 FILE_NAME 环境变量")
     with sync_playwright() as playwright:
         run(playwright, gist_id,file_name)
