@@ -198,29 +198,57 @@ def run(playwright: Playwright, gist_id: str, filename) -> None:
     print(f"生成的密码: {password}")
 
     print("正在填写注册信息...")
+    # page.get_by_role("textbox", name="请输入邮箱").fill(email)
+    # page.get_by_role("textbox", name="请输入密码").fill(password)
+    # page.get_by_role("button", name="注 册").click()[]
     page.locator("xpath=(//input)[1]").fill(email)
+    page.wait_for_timeout(random.randint(200, 600))
     page.locator("xpath=(//input)[2]").fill(password)
+    page.wait_for_timeout(random.randint(200, 600))
     page.locator("xpath=(//input)[3]").fill(password)
+    page.wait_for_timeout(random.randint(200, 600))
+    # 定位并勾选同意服务条款
     page.locator("xpath=//div[@class='agree']//input").check()
+    page.wait_for_timeout(random.randint(200, 600))
     page.locator("xpath=//button[@type='submit']").click()
+    page.wait_for_timeout(random.randint(200, 600))
     print("注册信息已提交。")
 
     # --- 2. 登录 ---
     print("正在导航至登录页面...")
     page.goto("https://vpn1.fnvpn1.top/#/login")
+
+    print("正在填写登录信息...")
+    # page.get_by_role("textbox", name="请输入邮箱").fill(email)
+    # page.get_by_role("textbox", name="请输入密码").fill(password)
+    # page.get_by_role("button", name="登 录").click()
+    page.wait_for_timeout(random.randint(200, 600))
     page.locator("xpath=(//input)[1]").fill(email)
+    page.wait_for_timeout(random.randint(200, 600))
     page.locator("xpath=(//input)[2]").fill(password)
+    page.wait_for_timeout(random.randint(200, 600))
     page.locator("xpath=//button[@type='submit']").click()
     print("登录信息已提交。")
 
+    # 等待登录成功并跳转到仪表盘页面
     print("正在等待跳转至用户后台...")
     page.wait_for_url("https://vpn1.fnvpn1.top/#/stage/dashboard")
+    page.wait_for_timeout(random.randint(200, 600))
     print("登录成功，已进入用户后台。")
 
-    # --- 3. 获取订阅 ---
+    # --- 3. 获取并保存订阅链接 ---
     print("正在获取订阅链接...")
-    page.locator("xpath=((//ul[contains(@class,'link')])[2]//li)[last()]").click()
+    # page.get_by_text("我的订阅").first.click()
+    page.locator(
+        "xpath=((//ul[contains(@class,'link')])[2]//li)[last()]"
+    ).click()
+
+    # 等待“复制”按钮出现并点击
+    # page.get_by_text("复制").first.click()
     page.locator("xpath=//i[contains(@class,'clipboard')]").click()
+    print("已点击复制按钮。")
+
+    # 从剪贴板获取内容
     subscription_url = page.evaluate("navigator.clipboard.readText()")
     print(f"成功复制到剪贴板内容: {subscription_url}")
 
