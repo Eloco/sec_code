@@ -10,9 +10,8 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}    # 用于更新 gist
-      GIST_ID: ${{ secrets.GIST_ID }}              # Gist ID
-      GIST_FILENAME: ${{ secrets.GIST_FILENAME }}  # Gist 文件名
+      GIST_TOKEN: ${{ secrets.GIST_TOKEN }}    # 用于更新 gist
+      GIST_ID: ${{ secrets.FREE_VPN_GIST_ID }}              # Gist ID
 
     steps:
       - name: Checkout repository
