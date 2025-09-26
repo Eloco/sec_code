@@ -3,7 +3,7 @@ name: free_vpn.vpn1.fnvpn1.top
 on:
   workflow_dispatch:  # 手动触发
   schedule:
-    - cron: "0 2 * * *"  # 每天凌晨 2 点运行，可选
+    - cron: "22 */6 * * *"  # 每6小时
 
 jobs:
   run-script:
