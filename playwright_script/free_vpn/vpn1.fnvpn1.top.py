@@ -257,10 +257,10 @@ def run(playwright: Playwright, gist_id: str, filename) -> None:
     print(f"成功复制到剪贴板内容: {subscription_url}")
 
     subscription_str = get_response_text(subscription_url)
-    subscription_yaml_str = convert_to_clash_yaml(subscription_str)
+    #subscription_yaml_str = convert_to_clash_yaml(subscription_str)
 
     # --- 上传 gist ---
-    upload_to_gist(subscription_yaml_str, gist_id,filename)
+    upload_to_gist(subscription_str, gist_id,filename)
 
     print("任务完成，关闭浏览器。")
     context.close()
