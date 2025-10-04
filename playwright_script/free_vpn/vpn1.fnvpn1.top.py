@@ -60,6 +60,7 @@ def get_response_text(url: str) -> str:
     }
     resp = requests.get(url, headers=headers)
     resp.raise_for_status()
+    print(resp.text)
     return resp.text
 
 
