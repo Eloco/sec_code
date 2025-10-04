@@ -55,7 +55,10 @@ def generate_password():
 
 
 def get_response_text(url: str) -> str:
-    resp = requests.get(url)
+    headers = {
+        "User-Agent": "Clash-Verge/2.2.3"
+    }
+    resp = requests.get(url, headers=headers)
     resp.raise_for_status()
     return resp.text
 
