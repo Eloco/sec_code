@@ -218,21 +218,21 @@ def run(playwright: Playwright, gist_id: str, filename) -> None:
     page.wait_for_timeout(random.randint(200, 600))
     print("注册信息已提交。")
 
-    # --- 2. 登录 ---
-    print("正在导航至登录页面...")
-    page.goto("https://vpn1.fnvpn1.top/#/login")
+    # # --- 2. 登录 ---
+    # print("正在导航至登录页面...")
+    # page.goto("https://vpn1.fnvpn1.top/#/login")
 
-    print("正在填写登录信息...")
-    # page.get_by_role("textbox", name="请输入邮箱").fill(email)
-    # page.get_by_role("textbox", name="请输入密码").fill(password)
-    # page.get_by_role("button", name="登 录").click()
-    page.wait_for_timeout(random.randint(200, 600))
-    page.locator("xpath=(//input)[1]").fill(email)
-    page.wait_for_timeout(random.randint(200, 600))
-    page.locator("xpath=(//input)[2]").fill(password)
-    page.wait_for_timeout(random.randint(200, 600))
-    page.locator("xpath=//button[@type='submit']").click()
-    print("登录信息已提交。")
+    # print("正在填写登录信息...")
+    # # page.get_by_role("textbox", name="请输入邮箱").fill(email)
+    # # page.get_by_role("textbox", name="请输入密码").fill(password)
+    # # page.get_by_role("button", name="登 录").click()
+    # page.wait_for_timeout(random.randint(200, 600))
+    # page.locator("xpath=(//input)[1]").fill(email)
+    # page.wait_for_timeout(random.randint(200, 600))
+    # page.locator("xpath=(//input)[2]").fill(password)
+    # page.wait_for_timeout(random.randint(200, 600))
+    # page.locator("xpath=//button[@type='submit']").click()
+    # print("登录信息已提交。")
 
     # 等待登录成功并跳转到仪表盘页面
     print("正在等待跳转至用户后台...")
