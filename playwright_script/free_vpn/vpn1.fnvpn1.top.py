@@ -46,7 +46,7 @@ def generate_email():
     ten_years_ago = today.replace(year=today.year - 21)
     today_date = ten_years_ago.strftime("%Y%m")
     email_domain = get_random_domain()
-    email_user = generate_random_string(22 - len(email_domain))
+    email_user = generate_random_string(12 - len(email_domain))
     return f"{email_user}{today_date}@{email_domain}"
 
 
